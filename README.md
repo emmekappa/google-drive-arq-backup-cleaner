@@ -1,4 +1,4 @@
-# Google Drive Trash Cleaner
+# Google Drive Arq Backup Cleaner
 Unlike many other cloud storage services, Google Drive doesn't auto delete files in trash/bin even after they've been there for a long time.
 There isn't even a way to check when a file was trashed.
 Emptying the entire trash folder is just too risky.
