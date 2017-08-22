@@ -1,9 +1,5 @@
 # Google Drive Arq Backup Cleaner
-Unlike many other cloud storage services, Google Drive doesn't auto delete files in trash/bin even after they've been there for a long time.
-There isn't even a way to check when a file was trashed.
-Emptying the entire trash folder is just too risky.
-
-This script deletes all Arq Backup files
+This script deletes all [Arq Backup](http://www.arqbackup.com) files
 *WARNING* it will deletes all Google Drive binary (unknown) files which filename is 40chars 
 
 ## Dependencies
