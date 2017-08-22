@@ -3,8 +3,8 @@ Unlike many other cloud storage services, Google Drive doesn't auto delete files
 There isn't even a way to check when a file was trashed.
 Emptying the entire trash folder is just too risky.
 
-This script helps you safely cleanup Google Drive's trash by deleting only files that've been there for more than 30 days
-<small>(or some other period of time)</small>.
+This script deletes all Arq Backup files
+*WARNING* it will deletes all Google Drive binary (unknown) files which filename is 40chars 
 
 ## Dependencies
 To use the Python script directly
@@ -70,3 +70,5 @@ optional arguments:
 ### Credit
 The idea for the script's working mechanism is borrowed from
 [this Stack Overflow question](https://stackoverflow.com/questions/34803290/how-to-retrieve-a-recent-list-of-trashed-files-using-google-drive-api).
+
+Based on github.com/cfbao/google-drive-trash-cleaner
