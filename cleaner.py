@@ -317,7 +317,7 @@ class ScanProgress:
             return
         ymd = timeStr[:10]
         if ymd > self.printed:
-            print('\rScanning files trashed on ' + ymd, end='')
+            print('\rScanning files ' + ymd, end='')
             self.printed = ymd
     
     def found(self, time, name):
@@ -331,7 +331,7 @@ class ScanProgress:
             self.noItemYet = False
         print(time + ''.ljust(4) + name)
         if not self.noProgress:
-            print('\rScanning files trashed on ' + self.printed, end='')
+            print('\rScanning files ' + self.printed, end='')
     
     def clear_line(self):
         print('\r' + ''.ljust(40) + '\r', end='')
