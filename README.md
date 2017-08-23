@@ -1,7 +1,7 @@
 # Google Drive Arq Backup Cleaner
 This script deletes all [Arq Backup](http://www.arqbackup.com) files
 
-*WARNING* it'll deletes all Google Drive binary (unknown) files which filename is 40chars so _run it at your own risk_
+**WARNING** it'll deletes all Google Drive binary (unknown) files which filename is 40chars so _run it at your own risk_
 
 ## Dependencies
 To use the Python script directly
