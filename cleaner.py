@@ -300,6 +300,7 @@ def delete_old_files(service, deletionList, flags):
         request = service.files().delete(fileId = item['fileId'])
         execute_request(request, flags.timeout)
         logger.info(item['time'] + ''.ljust(4) + item['name'])
+        print("Deleting " + item['name'])
     print('Files successfully deleted')
     return True
 
