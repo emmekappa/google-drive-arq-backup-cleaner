@@ -56,4 +56,4 @@ optional arguments:
 The idea for the script's working mechanism is borrowed from
 [this Stack Overflow question](https://stackoverflow.com/questions/34803290/how-to-retrieve-a-recent-list-of-trashed-files-using-google-drive-api).
 
-Based on github.com/cfbao/google-drive-trash-cleaner
+Based on http://github.com/cfbao/google-drive-trash-cleaner
