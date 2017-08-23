@@ -9,18 +9,6 @@ To use the Python script directly
 * package *google-api-python-client*  
 run `pip install --upgrade google-api-python-client` to install
 
-To use the Windows binary (download on the [releases](https://github.com/cfbao/google-drive-trash-cleaner/releases) page)
-* Windows update [KB2999226](https://support.microsoft.com/en-gb/help/2999226/update-for-universal-c-runtime-in-windows "Update for Universal C Runtime in Windows")
-
-## How-to
-Download `cleaner`([.py](https://raw.githubusercontent.com/cfbao/google-drive-trash-cleaner/v1.1.1rc/cleaner.py) or
-[.exe](https://github.com/cfbao/google-drive-trash-cleaner/releases/download/v1.1.1rc/cleaner.exe)),
-place it in an empty local folder, and run it from command line.
-
-By default, `cleaner` retrieves a list of all files trashed more than 30 days ago, and prints their info on screen.
-You're asked whether you want to delete them.
-If confirmed, these files are permanently deleted from Google Drive.
-
 ### Google authorization
 The first time you run `cleaner`, you will be prompted with a Google authorization page asking you for permission to view and manage your Google Drive files.
 Once authorized, a credential file will be saved in `.credentials\google-drive-trash-cleaner.json` under your home directory (`%UserProfile%` on Windows).
