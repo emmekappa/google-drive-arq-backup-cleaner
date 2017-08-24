@@ -20,6 +20,8 @@ from apiclient.errors import HttpError
 from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
+from multiprocessing import Pool
+from functools import partial
 
 if getattr(sys, 'frozen', False):
     # running in a bundle
@@ -265,6 +267,25 @@ def get_deletion_list(service, pageToken, flags, pathFinder=None):
     progress.clear_line()
     return deletionList, pageTokenBefore, int(response.get('newStartPageToken'))
 
+def delete_file(flags, item):
+        request = build_service(flags).files().delete(fileId = item['fileId'])
+        execute_request(request, flags.timeout)
+        print("Deleting " + item['name'])
+
+def batch(iterable, n=1):
+    l = len(iterable)
+    for ndx in range(0, l, n):
+        yield iterable[ndx:min(ndx + n, l)]
+
+def delete_file_callback(request_id, response, exception):
+    if exception is not None:
+        # Do something with the exception
+        print("Something wrong while deleting file: " + exception.Message)
+    else:
+        pass
+        #print("File deleted")
+    
+
 def delete_old_files(service, deletionList, flags):
     """Print and delete files in deletionList
     
@@ -296,13 +317,25 @@ def delete_old_files(service, deletionList, flags):
         if not confirmed:
             return False
     print('Deleting...')
-    for item in reversed(deletionList):
-        request = service.files().delete(fileId = item['fileId'])
-        execute_request(request, flags.timeout)
-        logger.info(item['time'] + ''.ljust(4) + item['name'])
-        print("Deleting " + item['name'])
+
+    for chunk in batch(deletionList, 20):
+        batch_request = service.new_batch_http_request(callback=delete_file_callback)
+        for item in chunk:
+            print("Adding " + item["fileId"] + " to deletion batch")
+            batch_request.add(service.files().delete(fileId=item["fileId"]))
+        execute_request(batch_request, flags.timeout)
+        print("batch deleted.")
+    
     print('Files successfully deleted')
     return True
+    
+    #for item in reversed(deletionList):
+    #    request = service.files().delete(fileId = item['fileId'])
+    #    execute_request(request, flags.timeout)
+    #    logger.info(item['time'] + ''.ljust(4) + item['name'])
+    #    print("Deleting " + item['name'])
+    #print('Files successfully deleted')
+    #return True
 
 class ScanProgress:
     def __init__(self, quiet, noProgress):
