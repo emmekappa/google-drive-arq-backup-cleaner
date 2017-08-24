@@ -280,7 +280,8 @@ def batch(iterable, n=1):
 def delete_file_callback(request_id, response, exception):
     if exception is not None:
         # Do something with the exception
-        print("Something wrong while deleting file: " + exception.Message)
+        print("Something wrong while deleting file...")
+        pass
     else:
         pass
         #print("File deleted")
